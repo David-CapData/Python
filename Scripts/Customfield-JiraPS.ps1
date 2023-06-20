@@ -5,9 +5,10 @@ Set-JiraConfigServer 'https://testdavidcapdata.atlassian.net'
 $server_used = Get-JiraConfigServer
 Write-Output "Le serveur jira used est: $server_used"
 
-# Récupération et connection sur le serveur jira utilisé avec des identifiants 
-# Après plusieurs tests, mettre le mot de passe du compte ne fonctionne pas mais le token si
-$jira_cred = Get-Credential 'kegoceh284@bodeem.com'
+# Récupération d'indentifiants, Mettez le un token API pour le mot de passe pour me bon fonctionnement de cette méthode
+$jira_cred = Get-Credential 'email_de_votre_compte'
+
+# Création d'une sesion Jira avec les identifiants récupérés
 New-JiraSession -Credential $jira_cred
 
 # Récupération du ticket avec les customfields
