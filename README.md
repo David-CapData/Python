@@ -1,2 +1,7 @@
-# Fichiers pour tester la récupérion d'informations sur un ticket jira
-Ce repository est composé d'un dossier contenant  des scripts pour récupérer des informations d'un tickiet Jira
+# Repository principale de David CapData
+Ce repository est composé d'un dossier contenant 3 scripts.
+
+Un script powershell pour récupérer des customfields d'un ticket jira.
+
+
+ 2 scripts python, l'un pour récupérer des customfields et l'autre pour récupérer des informations "classiques"
