@@ -2,7 +2,7 @@ import requests
 import json
 
 # Récupération des credentials
-creds_jira = ("dpierre@capdata-osmozium.com","ATATT3xFfGF0OHIGHRBDzwFMiRF5uvY5mlUfglXruzOzCHNqfC14LryPt2-cN1urk8ZLATpZUXO3-NlXhJKbW-hgx7c4cWL3RGqohCo64tcYC9FFeHZtVGFQ85bjuMbyy3XnCGQQTc6uHmiv8plucT7GEVT4OlnsAIO6N6E55HF-V3Lqv54_LOE=7CA8ABE7")
+creds_jira = ("dpierre@capdata-osmozium.com","Token-API")
 
 # Ligne pour call l'api du ticket avec les creds en option
 r = requests.get("https://testdavidcapdata.atlassian.net/rest/api/3/issue/T1-3", auth=creds_jira)
