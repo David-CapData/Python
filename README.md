@@ -1,7 +1,6 @@
 # Repository principale de David CapData
-Ce repository est composé d'un dossier contenant 3 scripts.
+Ce repository est composé d'un dossier Script.
 
-Un script powershell pour récupérer des customfields d'un ticket jira.
+Ce dossier contient des scripts faisant une tâche. La tâche effectué est le nom du fichier.
 
-
- 2 scripts python, l'un pour récupérer des customfields et l'autre pour récupérer des informations "classiques"
+Chaque script est commenté.
