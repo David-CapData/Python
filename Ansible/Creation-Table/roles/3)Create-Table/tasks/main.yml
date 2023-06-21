@@ -1,4 +1,6 @@
 ---
+# Tâche permettant la création d'une table à l'aide de varibles
+# Task for creating a table using varibles
 - name: "Create table {{ table_name2 }}"
   become: true
   become_user: "oracle"
