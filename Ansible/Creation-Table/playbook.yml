@@ -1,0 +1,25 @@
+---
+# Tâche pour exécuter les rôles
+# Task to perform the roles
+- name: Exceution of the roles
+  hosts: oracle_vm
+  gather_facts: true
+
+  # Module permettant de demmandé à l'utilisateur de rentrer une chaîne de charactère, ici des mots de passes
+  # Module that asks the user to enter a string of characters, in this case passwords.
+  vars_prompt:
+    - name: ans_usr_pswd
+      prompt: "Enter the password of root(à changer)"
+      private: true
+
+    - name: orcl_pswd
+      prompt: "Enter the  password of davidtest(à changer)"
+      private: true
+
+  # Module pour exécuter les roles
+  # Module for running roles
+  roles:
+    - 1)Create-Table
+    - 2)Insert-Values
+    - 3)Create-Table
+    - 4)Insert-Values

@@ -1,0 +1,4 @@
+# Fichier contenant les variables utilisé par toute les machines cibles
+# File containing variables used by all target machines
+---
+ansible_python_interpreter: /usr/bin/python3.6

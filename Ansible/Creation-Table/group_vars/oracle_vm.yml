@@ -1,0 +1,14 @@
+# Fichier de variables pour les machines du group du group machine "oracle_vm"
+# Variables file for machines in the "oracle_vm" machine group
+---
+ansible_user: "root"
+ansible_password: "{{ ans_usr_pswd }}"
+
+oracle_user: "davidcapdata"
+oracle_password: "{{ orcl_pswd }}"
+oracle_host: "address"
+oracle_port: "port"
+oracle_service_name: "dbtest2"
+oracle_var: "/u01/app/oracle/product/19c/db_1/"
+table_name: "T_ARTICLE"
+table_name2: "T_CATEGORIE"

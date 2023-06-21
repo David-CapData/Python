@@ -1,0 +1,39 @@
+---
+# Tâche permettant la création d'une table à l'aide de varibles
+# Task for creating a table using varibles
+- name: "Create table {{ table_name }}"
+  become: true
+  become_user: "oracle"
+
+  # Utilisation d'un module oracle créer par la communauté
+  # Use of an oracle module created by the community
+  ari_stark.ansible_oracle_modules.oracle_sql:
+    user: "{{ oracle_user }}"
+    password: "{{ oracle_password }}"
+    hostname: "{{ oracle_host }}"
+    port: "{{ oracle_port }}"
+    service_name: "{{ oracle_service_name }}"
+    oracle_home: "{{ oracle_var }}"
+    sql: |
+      DECLARE
+        table_exists NUMBER;
+      BEGIN
+        SELECT COUNT(*) INTO table_exists FROM user_tables WHERE table_name = '{{ table_name }}';
+        IF table_exists > 0 THEN
+          EXECUTE IMMEDIATE 'DROP TABLE {{ table_name }}';
+        END IF;
+        EXECUTE IMMEDIATE '
+          CREATE TABLE {{ table_name }} (
+            nom VARCHAR2(25) NOT NULL PRIMARY KEY,
+            designation VARCHAR2(100) UNIQUE,
+            code_categorie CHAR(5),
+            prix NUMBER(7,2)
+          )';
+      END;
+  register: result_create_table
+
+# Affichage du résultat de l'exécution de la commande
+# Displays the result of executing the command
+- name: Display result
+  ansible.builtin.debug:
+    var: result_create_table

@@ -1,0 +1,36 @@
+---
+- name: "Create table {{ table_name2 }}"
+  become: true
+  become_user: "oracle"
+  
+  # Utilisation d'un module oracle créer par la communauté
+  # Use of an oracle module created by the community
+  ari_stark.ansible_oracle_modules.oracle_sql:
+    user: "{{ oracle_user }}"
+    password: "{{ oracle_password }}"
+    hostname: "{{ oracle_host }}"
+    port: "{{ oracle_port }}"
+    service_name: "{{ oracle_service_name }}"
+    oracle_home: "{{ oracle_var }}"
+    sql: |
+      DECLARE
+        table_exists NUMBER;
+      BEGIN
+        SELECT COUNT(*) INTO table_exists FROM user_tables WHERE table_name = '{{ table_name2 }}';
+        IF table_exists > 0 THEN
+          EXECUTE IMMEDIATE 'DROP TABLE {{ table_name2 }}';
+        END IF;
+        EXECUTE IMMEDIATE '
+          CREATE TABLE {{ table_name2 }}(
+            code_categorie CHAR(5) NOT NULL PRIMARY KEY,
+            designation VARCHAR(100),
+            CONSTRAINT FK_code_categorie FOREIGN KEY (code_categorie) REFERENCES {{ table_name2 }}(code_categorie)
+          )';
+      END;
+  register: result_create_table
+
+# Affichage du résultat de l'exécution de la commande
+# Displays the result of executing the command
+- name: Display result
+  ansible.builtin.debug:
+    var: result_create_table

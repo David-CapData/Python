@@ -1,0 +1,42 @@
+---
+# Tâche permettant l'insertion de donnée dans la table précédemment créer à l'aide de varibles
+# Task for inserting data into the table previously created using varibles
+- name: "Insert Value into {{ table_name2 }}"
+  become: true
+  become_user: "oracle"
+  ari_stark.ansible_oracle_modules.oracle_sql:
+    user: "{{ oracle_user }}"
+    password: "{{ oracle_password }}"
+    hostname: "{{ oracle_host }}"
+    port: "{{ oracle_port }}"
+    service_name: "{{ oracle_service_name }}"
+    oracle_home: "{{ oracle_var }}"
+    sql: insert into {{ table_name2 }} values ('BB5', 'Libelle5')
+  register: result_create_table
+
+# Affichage du résultat de l'exécution de la commande
+# Displays the result of executing the command
+- name: Display result
+  ansible.builtin.debug:
+    var: result_create_table
+
+# Tâche permettant l'insertion de donnée dans une table précédemment créer à l'aide de varibles
+# Task for inserting data into a table previously created using varibles
+- name: "Insert Value into {{ table_name }}"
+  become: true
+  become_user: "oracle"
+  ari_stark.ansible_oracle_modules.oracle_sql:
+    user: "{{ oracle_user }}"
+    password: "{{ oracle_password }}"
+    hostname: "{{ oracle_host }}"
+    port: "{{ oracle_port }}"
+    service_name: "{{ oracle_service_name }}"
+    oracle_home: "{{ oracle_var }}"
+    sql:     insert into T_ARTICLE values ('ART5','Libelle5','BB5',9)
+  register: result_create_table
+
+# Affichage du résultat de l'exécution de la commande
+# Displays the result of executing the command
+- name: Display result
+  ansible.builtin.debug:
+    var: result_create_table
