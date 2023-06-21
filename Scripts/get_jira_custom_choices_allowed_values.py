@@ -27,12 +27,12 @@ if r.status_code == 200:
     Human_readable_data = json.dumps(data, indent=4)
 
     # Récupération des valeurs possible d'un custom field
-    # Fetch of all possible values of a custom field
+    # Retrieving the value of a custom field
     Possible_value1 = r.json()['fields']['customfield_10036']['allowedValues'][0]['value'] # fields.customfield_10036.allowedValues[0].value
     Possible_value2 = r.json()['fields']['customfield_10036']['allowedValues'][1]['value'] # fields.customfield_10036.allowedValues[1].value
 
-    # Affichage en Json formaté
-    # Display of the formatted Json
+    # Affichage des valeurs récupérées
+    # Display of retrieved values
     print("Les valeurs possible du Customfiel2 sont: " + Possible_value1 + " & " + Possible_value2)
 
 else:
